@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="/css/normalize.css" rel="stylesheet">
+        <link href="/css/skeleton.css" rel="stylesheet">
+        <link href="/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Testing Bash scripts and what is testing even for - Wojtek</title>
+        
+    </head>
+    <body>
+        <header>
+        
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">Wojtek</a>
+                    <ul>
+                        <li>
+                            <a href="/">Posts</a>
+                        </li>
+                        <li>
+                            <a href="/pages/links">Links</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wbazant">Software</a>
+                        </li>
+                        <li>
+                            <a href="/pages/consulting">Consulting</a>
+                        </li>
+                        <li>
+                            <a href="/pages/address">Address</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+            
+        </header>
+        
+        <div class="main container">
+            <div class="row">
+                <div class="nine columns">
+                    <main>
+                    
+                        
+<header>
+    <h1>Testing Bash scripts and what is testing even for</h1>
+    <aside>
+        <time datetime="2017-03-30">
+            Posted on 2017-03-30
+        </time>
+    </aside>
+</header>
+    <section id="section-1"><p>An externally facing application is tested before delivery to assure it meets expectations placed in it. <a href="http://blog.cleancoder.com/uncle-bob/2017/10/04/CodeIsNotTheAnswer.html">Uncle Bob is sternly clear that you&#39;re really not doing a good job if you don&#39;t have an automated means of doing that</a>. This of course assumes you care about the expectations people place in your software, but (even outside the commercial setting where people try to get others to pay for their work) disputing that assumption is only allowed in what my friend calls a &quot;philosophical free-for-all&quot; - perhaps you are the <a href="http://www.tate.org.uk/art/artworks/rothko-red-on-maroon-t01168">Rothko</a> of coders demonstrating that software having to do something is just another assumption to be challenged, or <a href="https://www.youtube.com/watch?v=YaGxhpe1NZ4">another V the cloaked renegade</a> directing an orchestra of humming fans and creaking CPUs.</p>
+
+<p>When you&#39;re employed on a large software development project, you gotta write tests, maybe even before you write the code, and then you gotta submit pull requests, and there will be tools checking that you wrote enough tests, and that they pass. In a less hip but equally large environment, like a bank, you still you gotta run tests, and e.g. attach their results in a spreadsheet. </p>
+
+<p>At Expression Atlas, I did some work on the experiment import pipeline. I could choose how many tests to write, and it wasn&#39;t typical to write tests, but I believe it&#39;s quite neat that I did. </p></section>
+    <section id="section-2"><p>When you&#39;re making a product for other users, it comes with a set of expectations about it. If you benefit from the users interacting with your product - perhaps it has a functionality they need and are paying you for - your venture relies on the users being able to do what they want to do. When you&#39;re making a product for someone that won&#39;t be the user, but will be the one benefitting from the users interacting with the product, it&#39;s not quite the same because you&#39;re trying to make someone else happy. Nevertheless in this situation the expectations from the product will be even more clear and perhaps exactly described via contract. This was something else entirely: the developers of the pipeline were also its users, so there was no delivery. The goal of my work was to make future operations more successful, in the hands of whoever will do them: giving them better tools for their job.</p>
+
+<p>The second round of our free-for-all is about whether you even want good tools- maybe you don&#39;t mind taking a long time doing relatively simple tasks, not unlike a zen monk drawing lines in their stone garden, or maybe accomplishing things is just a social construct that you happen to reject. Similarly up for discussion is the notion that one day, the functionality you are today trying to provide will cease to be required, and if you successfully dispute one of these, you&#39;ve pretty much contradicted what I hoped will be a noncontroversial statement, which is that there are lower and upper bounds on quality to aim for when developing. <a href="http://slatestarcodex.com/2014/03/24/should-you-reverse-any-advice-you-hear/">The Law Of Equal And Opposite Advice</a> suggests to tell yourself both &quot;don&#39;t worry if the program you wrote came out a bit unfortunate&quot;, and &quot;you&#39;ll be glad you have put in this additional effort&quot;, see which one sounds more familiar, and then do the other one.</p></section>
+    <section id="section-3"><p>Actually, starting to write tests for bash scripts can be an opportunity to go in either direction, and thus help you meet the expectations discussed before. When you&#39;d like to save on effort because currently it takes you lots of work to keep the quality of your pipeline high enough, add some tests and then skip most of current checks. If you&#39;re observing not to be putting enough effort into development - you can tell that by e.g. the tip of the branch being frequently broken, and you coming back to fix things - e.g. a test that runs the whole script and checks it didn&#39;t fail is probably a good return on your investment.</p>
+
+<p>I have been using <a href="https://github.com/sstephenson/bats">BATS</a> for this. The best effort saver I know is a test that runs your script and checks if <code>$?</code> is zero. It&#39;s almost free to set up, because you will surely run this thing you are writing at least once, so you already have the command - and then you can rely on that instead of actually running your script and examining what happened. Everything above checking the exit status is in the direction of &quot;spend more time, raise quality&quot; - maybe a check on the output of your program? Or putting bounds on the time it took?</p>
+
+<p>Installing a linter plays out similarly - let me give a concrete example of what it&#39;s good for. A typical Bash caveat that e.g. <a href="https://www.shellcheck.net/">Shellcheck</a> will tell you about is when you need to pass arguments between functions: <code>&quot;$@&quot;</code> is correct. Let me demonstrate:</p>
+
+<pre><code>f(){ echo f received $# args: $@ ; }
+g1(){ f $@ ; }
+g2(){ f &quot;$@&quot; ; }
+g2 is the correct function
+g1 appears to be indistinguishable from it
+
+#f counts 9 args
+g1 &quot;the difference&quot; &quot;is when you have spaces in args&quot;
+
+#f counts 2 args
+g2 &quot;the difference&quot; &quot;is when you have spaces in args&quot;
+</code></pre>
+
+<p>Shellcheck will emit <a href="https://github.com/koalaman/shellcheck/wiki/SC2068">SC2068</a> twice: for f and for g1. For f it&#39;s a false negative since echo will do the same thing either way.</p>
+
+<p>For saving effort, assume that if the code lints it won&#39;t trip up on something you haven&#39;t thought about, and spend less time trying to think about everything. If you passed on the arguments between functions as <code>&quot;$@&quot;</code> in your script, and it lints fine, (1) congratulations you got it, and you didn&#39;t confuse it with <code>$@</code>, <code>$*</code>, or <code>&quot;$*&quot;</code>, so you don&#39;t have to read this part of my blog post again. If you didn&#39;t and got a random error, you fixed it quickly without worrying too much, and then see (1). Your <code>echo &quot;$@&quot;</code> is slightly less readable and otherwise equivalent to <code>echo $@</code>, so you wrote worse code, but you didn&#39;t spend time thinking about it so you saved time.</p>
+
+<p>If you&#39;re in the other position, where you need to push quality up, fix the error and warnings, I guarantee that there will be some. For that investment of effort, the quality will go up: and you will have fewer cases where your pipeline worked fine until some header had a space in it.</p>
+
+<h3>Coda (15 April 2018)</h3>
+
+<p>I would like to add a nice ending, with a historical perspective. I&#39;ve written most of this when I was working on the Atlas pipeline. I moved stuff around, installed bats, wrote some tests, I also installed shellcheck and <a href="https://github.com/wbazant/shellcheck-tap-integration">integrated it with Test Anything Protocol</a>. Writing the tests pushed the project in a good direction- it created units of code that were okay - but at the time nobody needed to change that code so what&#39;s the point. Shellcheck told our bioinformatician about all the potential problems his code could have but actually didn&#39;t- because he ran it, and it was fine, so what was Shellcheck on about. Before I left I changed the pipeline to only alert on linter errors, and made it send everyone an email. </p>
+
+<p>I feel I did a more significant job when fixing bugs and polishing individual scripts, like, that R script which didn&#39;t work for TSV files with one column because R read it in as a vector instead of a matrix, or that Perl script which called <a href="http://search.cpan.org/~shlomif/Statistics-Descriptive-3.0612/lib/Statistics/Descriptive.pm">Statistics::Descriptive</a> to calculate percentiles on an small array for each 50.000 x 100 matrix entry, and using libraries to achieve common tasks is desirable except this one helpfully precalculated a bunch of other statistics users might also want- I found out it takes long under a profiler, went to read the package code, and saw it&#39;s completely not right for how it was used: carving it up and including just the bits needed gave our script a nice speedup. </p>
+
+<p>I&#39;ve since learned about another use case of BATS- in devops, as part of <code>ansible test</code>. In other words, your deployment script has just done a bunch of stuff, write some assertions about what it did, and if they&#39;re about files being present and programs succeeding Bash is the right language to do it in, and BATS provides convenient utilities for this.</p>
+</section>
+
+
+                    </main>
+                </div>
+
+                <div class="three columns sidebar">
+                    
+                        <img id="random-art-image">
+		<i><small>From <a href="http://www.random-art.org">www.random-art.org</a>, changes hourly</small></i>
+<br><br>
+                            <h1>Tags</h1>
+                                <a href="/tag/bash">bash</a>
+                                <a href="/tag/bioinformatics">bioinformatics</a>
+                                <a href="/tag/cooking">cooking</a>
+                                <a href="/tag/diy">diy</a>
+                                <a href="/tag/gardening">gardening</a>
+                                <a href="/tag/java">java</a>
+                                <a href="/tag/perl">perl</a>
+                                <a href="/tag/programming">programming</a>
+                                <a href="/tag/story">story</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+    <script>
+    // If we lose our websocket connection, the web server must
+    // be restarting, and we should reload the page
+    var autoReloadWs = new WebSocket( "ws://" + location.host + "/auto_reload" );
+    autoReloadWs.addEventListener( "close", function (event) {
+        // Wait one second then force a reload from the server
+        setTimeout( function () { location.reload(true); }, 1000 );
+    } );
+    // Send pings to ensure that the connection stays up, or we learn
+    // of the connection's death
+    setInterval( function () { autoReloadWs.send( "ping" ) }, 30000 );
+</script>
+</body>
+</html>
+
+<script>//<![CDATA[
+
+var images = [58326,17128,3652,45296,51413,7130,62934,1793,132793,42724,57450,68019,322,181,2532,40967,155826,13762,10272,14845,156978,185899,159789,162270,1965,163397,60099,16123,101874,1957,106835,8716,64224,179462,35115,161411,268,110180,34745,14409,143745,191750,162121,175308,65572,127436,42394,720,32753,8616,35693,45023,161935,193804,194271,177525,105903,70195,75341,45397,155193,102552,78407,57753,120690,134117,148697,5662,15439,280,125975,100009,194364,183254,233967,102094,179255,160132,158599,120691,106298,221259,161643,125817,195338,191537,210346,136190,217749,185578,130775,191471,210762,197515,233966,130459,211004,210492,96667,85827,135120,195738,195794,65094,85867,130846,109158,46441,64455,195733,218565,233219,239607,49894,233969,213612,221270,214730,218522,218679,253377,195737,55195,220946,217919,162960,191361,213820,103023,264092,264132,43431,217846,197575,263809,217926,220475,214692,86320,191465,225752,120091,159065,213894,193775,175329,155865,85918,214902,59227,213848,259884,217740,210765,228034,227957,109063,210457,213367,210922,217129,221012,154383,214303,213613,213186,128510,220664,117229,220959,210776,264084,222701,218362,264129,264099,157915,217652,214719,190699,1458,121812,213853,221289,182239,234043,245113,215498,233974,195741,220985,218361,221060,122758,214716,213629,228028,120790,86411,210770,128467,256897,252182,69541,214740,262025,215932,215517,253261,213836,213649,220224,217884,243784,188021,252060,210841,220253,261392,217823,211003,210946,210767,210891,210755,217651,217414,210768,180393,220222,218363,195521,253350,260239,194445,114363,253410,220668,214972,258878,213875,233968,195217,251722,163389,196961,76951,124500,214274,251979,264449,210445,215148,193150,221068,264157,220951,113299,220232,220252,197209,128479,155836,258917,264093,184564,162625,263912,97950,185527,101264,130020,133093,258256,182003,45396,217815,263847,217131,181364,263799,113700,210769,263796,182605,124578,215331,263635,263637,221264,220661,255782,119075,248589,124447,214899,179141,120075,195911,257904,175330,198288,184737,189638,262375,222705,221059,253375,261369,261446,214253,8596,213631,239161,213476,252766,252056,49698,252065,252073,197290,211481,252069,252068,195005,217917,198366,218557,217813,217751,120704];
+
+function displayImage(){
+    var ix = Math.floor(Date.now()/(1000*60*60)) % images.length;
+    var url = "http://www.random-art.org/img/small/"+images[ix]+".jpg";
+    document.getElementById("random-art-image").src = url;
+}
+displayImage();
+
+//]]></script><style>/*<![CDATA[*/
+
+body {
+  background-color: whitesmoke;
+}
+
+/*]]>*/</style>

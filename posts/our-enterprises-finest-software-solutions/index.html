@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="/css/normalize.css" rel="stylesheet">
+        <link href="/css/skeleton.css" rel="stylesheet">
+        <link href="/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>Our Enterprise's Finest Software Solutions - Wojtek</title>
+        
+    </head>
+    <body>
+        <header>
+        
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">Wojtek</a>
+                    <ul>
+                        <li>
+                            <a href="/">Posts</a>
+                        </li>
+                        <li>
+                            <a href="/pages/links">Links</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wbazant">Software</a>
+                        </li>
+                        <li>
+                            <a href="/pages/consulting">Consulting</a>
+                        </li>
+                        <li>
+                            <a href="/pages/address">Address</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+            
+        </header>
+        
+        <div class="main container">
+            <div class="row">
+                <div class="nine columns">
+                    <main>
+                    
+                        
+<header>
+    <h1>Our Enterprise&#39;s Finest Software Solutions</h1>
+    <aside>
+        <time datetime="2015-11-17">
+            Posted on 2015-11-17
+        </time>
+    </aside>
+</header>
+    <section id="section-1"><p>There is a big idea out there in the startup world that you should build a Minimum Viable Product, e.g. <a href="http://theleanstartup.com/principles">The Lean Startup tells you to do that</a>. The general principle is to put together an unpolished product that is the core of your idea, presumably get someone to use it, and iterate from there. This is sometimes confused with a prototype or a demo that you put together and show to investors, or only manifests itself with the founders&#39; idea that they need to build something. </p>
+
+<p>Surprisingly, I have encountered very similar strategies during my short but thrilling early career in an investment bank. As teams tried to navigate the complex landscape of random requirements, unclear priorities - my boss&#39;s boss&#39;s boss actually ordained during a yearly town hall that we should be prioritising stability while delivering on new features - and random interruptions of &quot;we can&#39;t deploy software because there&#39;s gonna be an announcement by a central bank and lots of trading&quot; or &quot;we can&#39;t hire anyone this quarter, because we didn&#39;t make enough money in Japan&quot; - anyway, I&#39;m rambling. People still got stuff done, thanks to the MVP principle: do most of what you have to do with the limited means available to you, i.e. the minimum viable effort that still gets you a promotion. I will share a couple of examples: may you find them educative and inspiring.</p></section>
+    <section id="section-2"><h3>Fast real-time system: cache a slow system</h3>
+
+<p>I worked on a system that showed anyone who cares numbers about risk and P&amp;L for portfolios in interest rate products. It had a feature that was introduced to me along with the phrase &quot;X is the poor man&#39;s Y&quot; by James, my manager there. The real-time numbers were sourced from upstream systems, and they were very slow. The Japanese desk wanted to see their real-time numbers faster. They requested an extension that queries a particular upstream system every five minutes and stores the result, so they got it. Unfortunately the feature was not implemented to a very high quality so there were lots of support issues about it.</p>
+
+<h3>What would Akka do?</h3>
+
+<p>We had a nightly feed into reporting and accounting systems - massively complicated operation with lots of mutually dependent tasks. After adding another domino piece to it, it started performing dramatically badly and the bosses came to know that the feed suffers from a design mistake. The task of fixing it went to Rob the consultant, the best programmer I worked with there and maybe ever, and they flew him to Budapest and hosted him in nice hotels. He did come up with a better architecture - essentially a reactive system - and successfully adapted our sprawling Java webapp. &quot;What would Akka do? &quot; comes from one of the progress updates he gave us and I don&#39;t remember what it would do but it was a solution to what the Java app should be made to do. Rob did not add <a href="https://akka.io/">Akka</a> to the feeds, but implemented what he needed with thread pools, synchronized blocks, and other usual hairy concurrency primitives. </p>
+
+<h3>CSV Importer</h3>
+
+<p>There was a big new program calculating finance numbers in construction, set off to replace lots of other systems, and there was a big complicated issue about how our program would interface with it. It wouldn&#39;t be complicated anywhere else, but there were lots of extra constraints, like, nobody was allowed to call the new program or use it as a library. As a proof of concept, our program opened a port where you could tell it there&#39;s a CSV file to be read in, and this was the interface for when I was there. It spent lots of time and memory in <code>java.lang.Double.parseDouble</code>, and I remember Rob messing with his own Double parser, but otherwise it worked really well. </p>
+
+<p>It made management quite uncomfortable that this is the best that can happen in the face of all the ridiculous constraints in place - for example, the new program stored the data in a fancy way, and you needed to interface it with a library in the codebase of the new program, but you weren&#39;t allowed to have the new program as a library. Eventually - this was unfolding in my final days there - they&#39;ve agreed on some other file format to read and write to. Later Rob became the team lead and in due course achieved the next milestones towards whatever the thing was that needed to happen on this issue.</p>
+
+<h3>The minimally viable support strategy</h3>
+
+<p>y team constituted level three support for the program we wrote. Level one was a guy on the trading floor that could install it, and level two were guys in India who fielded issues and complaints about stuff. One of us rotated as level three, and we were meant to have an advisory role. It would be a mixture of randomly incoherent issues that I had to punt over after finding somewhere to blame - they wouldn&#39;t really be our problems, they were issues in the systems giving us data, confusing but correct behaviour- that could be understood and explained away, and real massive actual problems. </p>
+
+<p>The actual problems were almost always in the old program that gave us numbers, which we shared the rota with, and they were really big, say, a batch job was scheduled overnight to transfer the currencies between various legal entities of the bank, shifting hundreds of millions, and would choke on bad input. I&#39;d tell the support person to &quot;rerun the job, with the output sent to my display&quot; and soon the job would log to me computer through an X11 window. I could stop it and examine the variables, hack something up, and push it through. Well, the issues only got so big rarely, and I&#39;d try to give the big ones to Krisz the old system&#39;s manager or one of the developers. </p>
+
+<p>I didn&#39;t quite have what it took to be a hero, and I barely knew the proprietary dialect of APL the system was written in (<a href="http://www.aplusdev.org/index.html">later open sourced</a>), although I had fun learning and later got more or less comfortable with it. Whatever happened, the goal was to do anything to make the issue go away. Otherwise it got escalated, and that meant being put on an increasingly larger conference call which would take real balls to hang up on. Every random person on a related support rota had to dial in, regardless of whether they knew what was going on or wanted to fix anything, so the calls took long time to establish any basic facts. Eventually a hero showed up - maybe from the next shift, the New Yorkers were waiting for the Japanese to come into the office - and did something, and then it stopped being a problem for everybody on call, and maybe some of them went home to a cold dinner and children already in beds, or an empty apartment with a single blinking microwave light.</p>
+</section>
+
+
+                    </main>
+                </div>
+
+                <div class="three columns sidebar">
+                    
+                        <img id="random-art-image">
+		<i><small>From <a href="http://www.random-art.org">www.random-art.org</a>, changes hourly</small></i>
+<br><br>
+                            <h1>Tags</h1>
+                                <a href="/tag/bash">bash</a>
+                                <a href="/tag/bioinformatics">bioinformatics</a>
+                                <a href="/tag/cooking">cooking</a>
+                                <a href="/tag/diy">diy</a>
+                                <a href="/tag/gardening">gardening</a>
+                                <a href="/tag/java">java</a>
+                                <a href="/tag/perl">perl</a>
+                                <a href="/tag/programming">programming</a>
+                                <a href="/tag/story">story</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+    <script>
+    // If we lose our websocket connection, the web server must
+    // be restarting, and we should reload the page
+    var autoReloadWs = new WebSocket( "ws://" + location.host + "/auto_reload" );
+    autoReloadWs.addEventListener( "close", function (event) {
+        // Wait one second then force a reload from the server
+        setTimeout( function () { location.reload(true); }, 1000 );
+    } );
+    // Send pings to ensure that the connection stays up, or we learn
+    // of the connection's death
+    setInterval( function () { autoReloadWs.send( "ping" ) }, 30000 );
+</script>
+</body>
+</html>
+
+<script>//<![CDATA[
+
+var images = [58326,17128,3652,45296,51413,7130,62934,1793,132793,42724,57450,68019,322,181,2532,40967,155826,13762,10272,14845,156978,185899,159789,162270,1965,163397,60099,16123,101874,1957,106835,8716,64224,179462,35115,161411,268,110180,34745,14409,143745,191750,162121,175308,65572,127436,42394,720,32753,8616,35693,45023,161935,193804,194271,177525,105903,70195,75341,45397,155193,102552,78407,57753,120690,134117,148697,5662,15439,280,125975,100009,194364,183254,233967,102094,179255,160132,158599,120691,106298,221259,161643,125817,195338,191537,210346,136190,217749,185578,130775,191471,210762,197515,233966,130459,211004,210492,96667,85827,135120,195738,195794,65094,85867,130846,109158,46441,64455,195733,218565,233219,239607,49894,233969,213612,221270,214730,218522,218679,253377,195737,55195,220946,217919,162960,191361,213820,103023,264092,264132,43431,217846,197575,263809,217926,220475,214692,86320,191465,225752,120091,159065,213894,193775,175329,155865,85918,214902,59227,213848,259884,217740,210765,228034,227957,109063,210457,213367,210922,217129,221012,154383,214303,213613,213186,128510,220664,117229,220959,210776,264084,222701,218362,264129,264099,157915,217652,214719,190699,1458,121812,213853,221289,182239,234043,245113,215498,233974,195741,220985,218361,221060,122758,214716,213629,228028,120790,86411,210770,128467,256897,252182,69541,214740,262025,215932,215517,253261,213836,213649,220224,217884,243784,188021,252060,210841,220253,261392,217823,211003,210946,210767,210891,210755,217651,217414,210768,180393,220222,218363,195521,253350,260239,194445,114363,253410,220668,214972,258878,213875,233968,195217,251722,163389,196961,76951,124500,214274,251979,264449,210445,215148,193150,221068,264157,220951,113299,220232,220252,197209,128479,155836,258917,264093,184564,162625,263912,97950,185527,101264,130020,133093,258256,182003,45396,217815,263847,217131,181364,263799,113700,210769,263796,182605,124578,215331,263635,263637,221264,220661,255782,119075,248589,124447,214899,179141,120075,195911,257904,175330,198288,184737,189638,262375,222705,221059,253375,261369,261446,214253,8596,213631,239161,213476,252766,252056,49698,252065,252073,197290,211481,252069,252068,195005,217917,198366,218557,217813,217751,120704];
+
+function displayImage(){
+    var ix = Math.floor(Date.now()/(1000*60*60)) % images.length;
+    var url = "http://www.random-art.org/img/small/"+images[ix]+".jpg";
+    document.getElementById("random-art-image").src = url;
+}
+displayImage();
+
+//]]></script><style>/*<![CDATA[*/
+
+body {
+  background-color: whitesmoke;
+}
+
+/*]]>*/</style>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53600/tag/diy/1.html</link>
+        <atom:link href="http://127.0.0.1:53600/tag/diy" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>DIY lamp cover</title>
+            <link>http://127.0.0.1:53600/posts/diy-lamp-cover</link>
+            <guid>http://127.0.0.1:53600/posts/diy-lamp-cover</guid>
+            <description><![CDATA[
+                <p>Artificial lighting is one of the big inventions we take for granted, and perhaps not rightly so, since its role has really grown in our lives since its inception. Today it not only it lets us work in factories for longer but also to decouple ourselves from the sun; it influences our moods and sleep patterns. We spend our days in places like offices, where we don't really choose what the lighting is and where, and perhaps it is not set up to our benefit - if your workplace always seems super energising, they probably have these casino-style ultrablue lights and you don't even realise. Take control of the lighting where you can, which certainly should be in your own house. In this post I'm going to teach you how to make a lamp cover from readily available materials.</p>
+                <p><a href="http://127.0.0.1:53600/posts/diy-lamp-cover#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Mon, 04 Feb 2019 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>DIY reading chair</title>
+            <link>http://127.0.0.1:53600/posts/diy-reading-chair</link>
+            <guid>http://127.0.0.1:53600/posts/diy-reading-chair</guid>
+            <description><![CDATA[
+                <p>My friend had a nice, wooden and apparently really creaky bed frame, and after it broke he gave me the wood. What a canvas to paint on! Today I took advantage of a long weekend and used the wood to build a chair optimised for reading. The labor was minimal but it took a lot of thinking: I would like to share the story. </p>
+                <p><a href="http://127.0.0.1:53600/posts/diy-reading-chair#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Mon, 28 May 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>

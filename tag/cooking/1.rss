@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53600/tag/cooking/1.html</link>
+        <atom:link href="http://127.0.0.1:53600/tag/cooking" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>Apple and rice bake: cheap dish from bad times</title>
+            <link>http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times</link>
+            <guid>http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times</guid>
+            <description><![CDATA[
+                <p>I learned the recipe from my parents, who learned it from their parents. I enjoy the dish regularly when apples are in season. Apples are in season from August to first frosts. In this post I will also tell you how I figured out the bit of context to the dish I was missing as a child, namely its suitedness to country-wide poverty and institutional disfunction that must have been reality for my grandparents and everyone they knew. I will conclude with musings on a 'cheap dish for bad times', an alternate title I was toying with, but first I will tell you how to make the damn thing which I think should be standard convention for food blogs.</p>
+                <p><a href="http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sat, 24 Nov 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Make a Greek version of any dish</title>
+            <link>http://127.0.0.1:53600/posts/make-a-greek-version-of-any-dish</link>
+            <guid>http://127.0.0.1:53600/posts/make-a-greek-version-of-any-dish</guid>
+            <description><![CDATA[
+                <p>I have made a very successful cooking experiment today, and managed to confirm the validity of a novel technique in leftover management that I have devised also today, but slightly earlier. This post won't quite touch upon whether any idea can be truly new, but it will hopefully still teach you something.</p>
+                <p><a href="http://127.0.0.1:53600/posts/make-a-greek-version-of-any-dish#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Mon, 18 Jun 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>

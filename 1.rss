@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53600/1.html</link>
+        <atom:link href="http://127.0.0.1:53600/" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>Storing water in a flat landscape</title>
+            <link>http://127.0.0.1:53600/posts/storing-water-in-flat-landscape</link>
+            <guid>http://127.0.0.1:53600/posts/storing-water-in-flat-landscape</guid>
+            <description><![CDATA[
+                <p>The climate is changing, which may be detrimental to the long-term future of your garden. You should begin to prepare for the increased variance in weather: abnormally warm or cold seasons, longer dry spells, more violent rains. I wouldn't worry about the total increase of temperature, if you live in temparate zones - it is predicted to be a mere few degrees over the next few decades, and your plants will probably enjoy it.</p>
+
+<p>The largest climate-induced risk to your garden is probably potential breakdown of society in areas worse off than yours. I suggest you leave the resulting massive wave of migration to your govermnent, which will probably sort out a nice border fence, and focus on things you can do something about.</p>
+
+<p>So, let's learn about storing water.</p>
+                <p><a href="http://127.0.0.1:53600/posts/storing-water-in-flat-landscape#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Fri, 20 Sep 2019 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Good uses of frowned-upon language features</title>
+            <link>http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features</link>
+            <guid>http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features</guid>
+            <description><![CDATA[
+                <p>Not every language feature is respected these days. I speculate why it might be, and demonstrate a few mind-expanding programming techniques.</p>
+                <p><a href="http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 19 May 2019 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>DIY lamp cover</title>
+            <link>http://127.0.0.1:53600/posts/diy-lamp-cover</link>
+            <guid>http://127.0.0.1:53600/posts/diy-lamp-cover</guid>
+            <description><![CDATA[
+                <p>Artificial lighting is one of the big inventions we take for granted, and perhaps not rightly so, since its role has really grown in our lives since its inception. Today it not only it lets us work in factories for longer but also to decouple ourselves from the sun; it influences our moods and sleep patterns. We spend our days in places like offices, where we don't really choose what the lighting is and where, and perhaps it is not set up to our benefit - if your workplace always seems super energising, they probably have these casino-style ultrablue lights and you don't even realise. Take control of the lighting where you can, which certainly should be in your own house. In this post I'm going to teach you how to make a lamp cover from readily available materials.</p>
+                <p><a href="http://127.0.0.1:53600/posts/diy-lamp-cover#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Mon, 04 Feb 2019 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>How to call R from Perl: on inter-process communication</title>
+            <link>http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication</guid>
+            <description><![CDATA[
+                <p>I'm glad the title caught your attention. Why call R from Perl - or have code in language X call code for language Y, for any X and Y, for that matter? Sometimes it's just hard to choose among languages you're fluent in, especially if you're a bit of a polyglot and don't have a clear favourite. Perhaps you value diversity, just like modern companies value diversity in their workforce: different programming languages, just like employees with different backgrounds, offer distinct advantages and strengths that can be drawn from when creating a product.</p>
+
+<p>I happen to have a language I strongly favour, and I consider my programs are already diverse enough, even though they all got written by a single white male. I also managed to have a job in bioinformatics without installing R for quite a while. I am not riding that streak any more because a specific thing I needed to do only exists as an R package, so I learned how to use R from Perl. This merits celebration with a blog post, so I'm gonna tell you how to call R from Perl and also more generally about IPC.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 09 Dec 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Apple and rice bake: cheap dish from bad times</title>
+            <link>http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times</link>
+            <guid>http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times</guid>
+            <description><![CDATA[
+                <p>I learned the recipe from my parents, who learned it from their parents. I enjoy the dish regularly when apples are in season. Apples are in season from August to first frosts. In this post I will also tell you how I figured out the bit of context to the dish I was missing as a child, namely its suitedness to country-wide poverty and institutional disfunction that must have been reality for my grandparents and everyone they knew. I will conclude with musings on a 'cheap dish for bad times', an alternate title I was toying with, but first I will tell you how to make the damn thing which I think should be standard convention for food blogs.</p>
+                <p><a href="http://127.0.0.1:53600/posts/apple-and-rice-bake-cheap-dish-from-bad-times#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sat, 24 Nov 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Instructions for your program from an online spreadsheet</title>
+            <link>http://127.0.0.1:53600/posts/instructions-for-your-program-from-an-online-spreadsheet</link>
+            <guid>http://127.0.0.1:53600/posts/instructions-for-your-program-from-an-online-spreadsheet</guid>
+            <description><![CDATA[
+                <p>Suppose you're a programmer contracting for a client who pays you to do analyses on a bunch of data. They give you a slightly different spreadsheet every week, and you're so lazy that you've scripted everything up. The only thing you need to do is take that spreadsheet, save it on disk or whatever, and press "run".</p>
+
+<p>Here's an idea for a workflow that goes one step further, using GitHub's online editing. Of course GitHub's competition offers this too, and I dislike this Microsoft owned company as much as is currently in fashion.</p>
+                <p><a href="http://127.0.0.1:53600/posts/instructions-for-your-program-from-an-online-spreadsheet#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Thu, 08 Nov 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>How to use fewer variables</title>
+            <link>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</guid>
+            <description><![CDATA[
+                <p>Using variables may benefit program readability, but many programmers regard it as a bit of a weak move (<a href="https://www.yegor256.com/2015/09/01/redundant-variables-are-evil.html">source: Yegor Bugayenko- programmer, blogger, and entrepreneur</a>). Giving stuff names is emphasised in beginner tutorials, and I expect many of my programming readers use variables a little bit too much, perhaps not realising it is merely a programming technique. I will explain the drawbacks of this technique, and give some alternatives, so that by eschewing it you might improve your craft further.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-use-fewer-variables#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Wed, 26 Sep 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Marx on Agile</title>
+            <link>http://127.0.0.1:53600/posts/marx-on-agile</link>
+            <guid>http://127.0.0.1:53600/posts/marx-on-agile</guid>
+            <description><![CDATA[
+                <p><a href="https://en.wikipedia.org/wiki/Agile_software_development">Agile</a> is a modern way to organise software development. <a href="https://en.wikipedia.org/wiki/Karl_Marx">Karl Marx (1818-1883)</a> was a philosopher, economist, historian, political theorist, sociologist, journalist and revolutionary socialist. His ideas, and revolutionary socialism he kickstarted, have caused quite a stir in the XX century, and it's still not certain whether they were good or not, because they were never properly implemented and truly tried. I'm not going to try convince you to agree with Marx, dear reader, or say that I do. We're going to merely examine some of his ideas, and see how they apply to the modern tech world.</p>
+                <p><a href="http://127.0.0.1:53600/posts/marx-on-agile#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sat, 08 Sep 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Customise your Internet</title>
+            <link>http://127.0.0.1:53600/posts/customise-your-internet</link>
+            <guid>http://127.0.0.1:53600/posts/customise-your-internet</guid>
+            <description><![CDATA[
+                <p>It's quite hard to have your own piece of internet these days. Blogging isn't easy, even if you don't have many readers. Sites ran by companies don't let you have your own piece, and they're made less usable by attempts to track the movement of your eyeballs and the like. My reader, I know you are yearning for something different. This post will teach you how to make bits of the modern Internet into what you may want them to be.</p>
+                <p><a href="http://127.0.0.1:53600/posts/customise-your-internet#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Wed, 08 Aug 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Incredibly woke potato cakes</title>
+            <link>http://127.0.0.1:53600/posts/incredibly-woke-potato-cakes</link>
+            <guid>http://127.0.0.1:53600/posts/incredibly-woke-potato-cakes</guid>
+            <description><![CDATA[
+                <p>I had delicious potato and fennel cakes for dinner today. I wanna teach you how to make them, and also share some thoughts on political implications of such dishes and how you too can be on the right side of history.</p>
+                <p><a href="http://127.0.0.1:53600/posts/incredibly-woke-potato-cakes#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 15 Jul 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>

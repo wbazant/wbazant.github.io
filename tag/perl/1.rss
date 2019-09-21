@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53600/tag/perl/1.html</link>
+        <atom:link href="http://127.0.0.1:53600/tag/perl" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>Good uses of frowned-upon language features</title>
+            <link>http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features</link>
+            <guid>http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features</guid>
+            <description><![CDATA[
+                <p>Not every language feature is respected these days. I speculate why it might be, and demonstrate a few mind-expanding programming techniques.</p>
+                <p><a href="http://127.0.0.1:53600/posts/good-uses-of-frowned-upon-language-features#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 19 May 2019 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>How to call R from Perl: on inter-process communication</title>
+            <link>http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication</guid>
+            <description><![CDATA[
+                <p>I'm glad the title caught your attention. Why call R from Perl - or have code in language X call code for language Y, for any X and Y, for that matter? Sometimes it's just hard to choose among languages you're fluent in, especially if you're a bit of a polyglot and don't have a clear favourite. Perhaps you value diversity, just like modern companies value diversity in their workforce: different programming languages, just like employees with different backgrounds, offer distinct advantages and strengths that can be drawn from when creating a product.</p>
+
+<p>I happen to have a language I strongly favour, and I consider my programs are already diverse enough, even though they all got written by a single white male. I also managed to have a job in bioinformatics without installing R for quite a while. I am not riding that streak any more because a specific thing I needed to do only exists as an R package, so I learned how to use R from Perl. This merits celebration with a blog post, so I'm gonna tell you how to call R from Perl and also more generally about IPC.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-call-r-from-perl-on-inter-process-communication#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 09 Dec 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>How to use fewer variables</title>
+            <link>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</guid>
+            <description><![CDATA[
+                <p>Using variables may benefit program readability, but many programmers regard it as a bit of a weak move (<a href="https://www.yegor256.com/2015/09/01/redundant-variables-are-evil.html">source: Yegor Bugayenko- programmer, blogger, and entrepreneur</a>). Giving stuff names is emphasised in beginner tutorials, and I expect many of my programming readers use variables a little bit too much, perhaps not realising it is merely a programming technique. I will explain the drawbacks of this technique, and give some alternatives, so that by eschewing it you might improve your craft further.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-use-fewer-variables#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Wed, 26 Sep 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Upgrade from object-oriented to functional programming with this weird trick</title>
+            <link>http://127.0.0.1:53600/posts/upgrade-from-object-oriented-to-functional-programming-with-this-weird-trick</link>
+            <guid>http://127.0.0.1:53600/posts/upgrade-from-object-oriented-to-functional-programming-with-this-weird-trick</guid>
+            <description><![CDATA[
+                <p>Picasso was a great man, but fond of exaggeration, so I always take it with a pinch of salt when people say it took him a lifetime to learn to draw like a child. As you might have guessed already, this post will be about me, and how I write Perl, and tracing the influence of my early periods of being sold on Haskell at university, training myself to appear worthy at interviews, and subsequently becomming a maintenance Java programmer.</p>
+                <p><a href="http://127.0.0.1:53600/posts/upgrade-from-object-oriented-to-functional-programming-with-this-weird-trick#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Tue, 10 Jul 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>Extra functionality through pipes</title>
+            <link>http://127.0.0.1:53600/posts/extra-functionality-for-command-line-programs</link>
+            <guid>http://127.0.0.1:53600/posts/extra-functionality-for-command-line-programs</guid>
+            <description><![CDATA[
+                <p>Sometimes the programs you are running aren't as fully featured as you need them to be. If it's your program, extend it to do work like you want it, the ad-hoc extensions will make it soon feel like a warm worn-in shoe. If it's not your program, and the missing feature is correctness, just fix your copy, and submit the fix to the author. Otherwise add the extra functionality outside, with an appropriate contraption. Here's a couple from me, based around pipes. </p>
+                <p><a href="http://127.0.0.1:53600/posts/extra-functionality-for-command-line-programs#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sat, 19 May 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>How to parse XML with regular expressions</title>
+            <link>http://127.0.0.1:53600/posts/how-to-parse-xml-with-regular-expressions</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-parse-xml-with-regular-expressions</guid>
+            <description><![CDATA[
+                <p>There is a belief, especially popular under university graduates with heads full of Noam Chomsky, <a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">in the inherent hierarchy of grammars</a>, and there are people out there who think it's something that has to be followed. <a href="https://stackoverflow.com/a/1732454">Obey the hierarchy, they tell you</a>. I suggest you hear them out, learn what is there to be learned, and then reply, I didn't know there were any rules about this. Dear reader, you are my fellow human and I want you to be strong and empowered. I'm gonna show you how to parse XML with regular expressions, and then you can make your own choices.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-parse-xml-with-regular-expressions#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Thu, 26 Apr 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>

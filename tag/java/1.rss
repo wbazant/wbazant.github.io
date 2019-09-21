@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53600/tag/java/1.html</link>
+        <atom:link href="http://127.0.0.1:53600/tag/java" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>How to use fewer variables</title>
+            <link>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</link>
+            <guid>http://127.0.0.1:53600/posts/how-to-use-fewer-variables</guid>
+            <description><![CDATA[
+                <p>Using variables may benefit program readability, but many programmers regard it as a bit of a weak move (<a href="https://www.yegor256.com/2015/09/01/redundant-variables-are-evil.html">source: Yegor Bugayenko- programmer, blogger, and entrepreneur</a>). Giving stuff names is emphasised in beginner tutorials, and I expect many of my programming readers use variables a little bit too much, perhaps not realising it is merely a programming technique. I will explain the drawbacks of this technique, and give some alternatives, so that by eschewing it you might improve your craft further.</p>
+                <p><a href="http://127.0.0.1:53600/posts/how-to-use-fewer-variables#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Wed, 26 Sep 2018 00:00:00 +0000
+            </pubDate>
+        </item>
+        <item>
+            <title>A lighter closeable iterator from Expression Atlas</title>
+            <link>http://127.0.0.1:53600/posts/a-lighter-closeable-iterator-from-expression-atlas</link>
+            <guid>http://127.0.0.1:53600/posts/a-lighter-closeable-iterator-from-expression-atlas</guid>
+            <description><![CDATA[
+                <p>The Atlas webapp code has <a href="https://github.com/gxa/atlas/blob/master/base/src/main/java/uk/ac/ebi/atlas/commons/streams/ObjectInputStream.java">this interface</a> :</p>
+
+<pre><code>import java.io.Closeable;
+
+public interface ObjectInputStream&lt;T&gt; extends Closeable {
+    // returns null when stream is empty
+    T readNext();
+}
+</code></pre>
+
+<p>I thought it's so interesting that I wrote an entire blog post about it.</p>
+                <p><a href="http://127.0.0.1:53600/posts/a-lighter-closeable-iterator-from-expression-atlas#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Tue, 10 Jan 2017 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>

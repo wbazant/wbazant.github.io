@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="/css/normalize.css" rel="stylesheet">
+        <link href="/css/skeleton.css" rel="stylesheet">
+        <link href="/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <title>How to parse XML with regular expressions - Wojtek</title>
+        
+    </head>
+    <body>
+        <header>
+        
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">Wojtek</a>
+                    <ul>
+                        <li>
+                            <a href="/">Posts</a>
+                        </li>
+                        <li>
+                            <a href="/pages/links">Links</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wbazant">Software</a>
+                        </li>
+                        <li>
+                            <a href="/pages/consulting">Consulting</a>
+                        </li>
+                        <li>
+                            <a href="/pages/address">Address</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+            
+        </header>
+        
+        <div class="main container">
+            <div class="row">
+                <div class="nine columns">
+                    <main>
+                    
+                        
+<header>
+    <h1>How to parse XML with regular expressions</h1>
+    <aside>
+        <time datetime="2018-04-26">
+            Posted on 2018-04-26
+        </time>
+    </aside>
+</header>
+    <section id="section-1"><p>There is a belief, especially popular under university graduates with heads full of Noam Chomsky, <a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">in the inherent hierarchy of grammars</a>, and there are people out there who think it&#39;s something that has to be followed. <a href="https://stackoverflow.com/a/1732454">Obey the hierarchy, they tell you</a>. I suggest you hear them out, learn what is there to be learned, and then reply, I didn&#39;t know there were any rules about this. Dear reader, you are my fellow human and I want you to be strong and empowered. I&#39;m gonna show you how to parse XML with regular expressions, and then you can make your own choices.</p></section>
+    <section id="section-2"><p>Here&#39;s an example XML, and a program I wrote for work. I wanted to have a list of all assemblies published for taxon 6231 (flatworms). I went to NCBI&#39;s website where they live, opened the Network tab, and saw this is loaded through AJAX:</p>
+
+<pre><code>https://www.ncbi.nlm.nih.gov/assembly/organism/browse-organism/6231/all/?p$l=Ajax&amp;page=1&amp;pageSize=1000&amp;sortCol=4&amp;sortDir=-1
+</code></pre>
+
+<p>It&#39;s clearly populated dynamically by a program, as an unofficial API - it wasn&#39;t meant for me, it looks like it&#39;s meant to fill a HTML page, and it&#39;s not actually valid XML. It&#39;s a <a href="http://ergoemacs.org/emacs/elisp_text-soup_automation.html">text soup</a>, but it does have structure:</p>
+
+<pre><code>crap
+&lt;td&gt;{name I want}...&lt;/td&gt;
+...
+  &lt;a href=&quot;{oh yes I want that link}&quot;...&gt;{this looks useful too}&lt;/a&gt;
+more crap
+crap everywhere
+same crappy stuff all over again
+</code></pre>
+
+<p>I want to filter the file to get just the bits I want. <code>grep -B2</code> produces:  </p>
+
+<pre><code>&lt;td&gt;Caenorhabditis remanei (nematodes)&lt;/td&gt;
+  &lt;td&gt;
+    &lt;a href=&quot;https://www.ncbi.nlm.nih.gov/assembly/GCA_001643735.2/&quot;&gt;ASM164373v2&lt;/a&gt;
+--
+  &lt;td&gt;Setaria digitata (nematodes)&lt;/td&gt;
+  &lt;td&gt;
+    &lt;a href=&quot;https://www.ncbi.nlm.nih.gov/assembly/GCA_900083525.1/&quot;&gt;Sdigitata&lt;/a&gt;
+--
+</code></pre>
+
+<p>Better: a regularly repeating unit of stuff, although with crap around it. Distinct, repeated craplets. The <code>-A</code> and <code>-B</code> flags to <code>grep</code> mean lines after and lines before, and get the tool to produce entries like that, with <code>--</code> separating the units.</p>
+
+<p>Now it&#39;s time to get on your programming horse. I tried many breeds, but none were as high as I would have liked them, so I have settled on the camel 🐫. I will post the program first:</p>
+
+<pre><code>perl -e &#39;$/=&quot;--&quot;; while(&lt;&gt;){ 
+    /&lt;td&gt;(.*?) \(/ ;
+    print &quot;$1\t&quot;; 
+    /&lt;a href=&quot;(.*?)&quot;&gt;(.*?)&lt;/; 
+    print &quot;$1\t$2\n&quot;; 
+}&#39;
+</code></pre>
+
+<p>It&#39;s delightful, because it uses so many different features despite being relatively short: <code>-e</code> executes a program, and <code>while(&lt;&gt;)</code> reads input line by line. Before the loop, I&#39;m first redefining <code>$/</code> to <code>&quot;--&quot;</code>, which tells perl that when it&#39;s reading files, the lines are meant to be separated by two dashes.  We want that, because this is how we got our records from <code>grep -B</code>. </p>
+
+<p>Then you&#39;ll notice the loop is just <code>while(&lt;&gt;)</code>. In Perl, when we don&#39;t mention the name of the variable, that name is <code>$_</code>. We don&#39;t refer to this variable in the program, but the next few bits know to use it: <code>/&lt;td&gt;(.*?) \(/ ;</code> is a regex match, over - also - <code>$_</code> the default variable. The brackets mean <a href="https://en.wiktionary.org/wiki/capturing_group">capturing groups</a>, which is by the way how you can swap two columns with the programmer&#39;s regular expressions, a task proven impossible with the academic&#39;s regular expressions.</p>
+
+<p>The capturing groups, when they match, get stored for us in global variables <code>$1</code>, <code>$2</code>, etc.</p>
+
+<p>The program recognises <code>$1</code> with &#39;the bit after <code>&lt;td&gt;</code> and before space&#39;, then prints it with a tab. Then it matches again as <code>$1</code> and <code>$2</code> with another regex &#39;the bit in quotes before <code>href</code>&#39; and &#39;the bit between <code>&gt;</code> and <code>&lt;</code>&#39;. It prints these two, and a newline character.</p>
+
+<p>The end program, ready to go into your pipe, is</p>
+
+<pre><code>curl -s &#39;https://www.ncbi.nlm.nih.gov/assembly/organism/browse-organism/6231/all/?p$l=Ajax&amp;page=1&amp;pageSize=1000&amp;sortCol=4&amp;sortDir=-1&#39; | grep -B 2 href | perl -e &#39;$/=&quot;--&quot;; while(&lt;&gt;){ /&lt;td&gt;(.*?) \(/ ; print &quot;$1\t&quot;; /&lt;a href=&quot;(.*?)&quot;&gt;(.*?)&lt;/; print &quot;$1\t$2\n&quot;; }&#39; | sort
+</code></pre>
+
+<p>My last comment on this is that you can solve the problem of making a list of assemblies in any other programming language. For example Python has BeautifulSoup, a module for scraping webpages. You can also try your luck and search for &quot;retrieve Platyhelminthes assembly list tsv&quot;, which, one day, might yield this very blog post.</p>
+
+<p>That&#39;s all. I am sorry if you didn&#39;t like it. Maybe you even thought it was literally the worst? I will be curious to hear your comments! </p>
+</section>
+
+
+                    </main>
+                </div>
+
+                <div class="three columns sidebar">
+                    
+                        <img id="random-art-image">
+		<i><small>From <a href="http://www.random-art.org">www.random-art.org</a>, changes hourly</small></i>
+<br><br>
+                            <h1>Tags</h1>
+                                <a href="/tag/bash">bash</a>
+                                <a href="/tag/bioinformatics">bioinformatics</a>
+                                <a href="/tag/cooking">cooking</a>
+                                <a href="/tag/diy">diy</a>
+                                <a href="/tag/gardening">gardening</a>
+                                <a href="/tag/java">java</a>
+                                <a href="/tag/perl">perl</a>
+                                <a href="/tag/programming">programming</a>
+                                <a href="/tag/story">story</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.me/statocles">Made with Statocles</a><br>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+
+    <script>
+    // If we lose our websocket connection, the web server must
+    // be restarting, and we should reload the page
+    var autoReloadWs = new WebSocket( "ws://" + location.host + "/auto_reload" );
+    autoReloadWs.addEventListener( "close", function (event) {
+        // Wait one second then force a reload from the server
+        setTimeout( function () { location.reload(true); }, 1000 );
+    } );
+    // Send pings to ensure that the connection stays up, or we learn
+    // of the connection's death
+    setInterval( function () { autoReloadWs.send( "ping" ) }, 30000 );
+</script>
+</body>
+</html>
+
+<script>//<![CDATA[
+
+var images = [58326,17128,3652,45296,51413,7130,62934,1793,132793,42724,57450,68019,322,181,2532,40967,155826,13762,10272,14845,156978,185899,159789,162270,1965,163397,60099,16123,101874,1957,106835,8716,64224,179462,35115,161411,268,110180,34745,14409,143745,191750,162121,175308,65572,127436,42394,720,32753,8616,35693,45023,161935,193804,194271,177525,105903,70195,75341,45397,155193,102552,78407,57753,120690,134117,148697,5662,15439,280,125975,100009,194364,183254,233967,102094,179255,160132,158599,120691,106298,221259,161643,125817,195338,191537,210346,136190,217749,185578,130775,191471,210762,197515,233966,130459,211004,210492,96667,85827,135120,195738,195794,65094,85867,130846,109158,46441,64455,195733,218565,233219,239607,49894,233969,213612,221270,214730,218522,218679,253377,195737,55195,220946,217919,162960,191361,213820,103023,264092,264132,43431,217846,197575,263809,217926,220475,214692,86320,191465,225752,120091,159065,213894,193775,175329,155865,85918,214902,59227,213848,259884,217740,210765,228034,227957,109063,210457,213367,210922,217129,221012,154383,214303,213613,213186,128510,220664,117229,220959,210776,264084,222701,218362,264129,264099,157915,217652,214719,190699,1458,121812,213853,221289,182239,234043,245113,215498,233974,195741,220985,218361,221060,122758,214716,213629,228028,120790,86411,210770,128467,256897,252182,69541,214740,262025,215932,215517,253261,213836,213649,220224,217884,243784,188021,252060,210841,220253,261392,217823,211003,210946,210767,210891,210755,217651,217414,210768,180393,220222,218363,195521,253350,260239,194445,114363,253410,220668,214972,258878,213875,233968,195217,251722,163389,196961,76951,124500,214274,251979,264449,210445,215148,193150,221068,264157,220951,113299,220232,220252,197209,128479,155836,258917,264093,184564,162625,263912,97950,185527,101264,130020,133093,258256,182003,45396,217815,263847,217131,181364,263799,113700,210769,263796,182605,124578,215331,263635,263637,221264,220661,255782,119075,248589,124447,214899,179141,120075,195911,257904,175330,198288,184737,189638,262375,222705,221059,253375,261369,261446,214253,8596,213631,239161,213476,252766,252056,49698,252065,252073,197290,211481,252069,252068,195005,217917,198366,218557,217813,217751,120704];
+
+function displayImage(){
+    var ix = Math.floor(Date.now()/(1000*60*60)) % images.length;
+    var url = "http://www.random-art.org/img/small/"+images[ix]+".jpg";
+    document.getElementById("random-art-image").src = url;
+}
+displayImage();
+
+//]]></script><style>/*<![CDATA[*/
+
+body {
+  background-color: whitesmoke;
+}
+
+/*]]>*/</style>
