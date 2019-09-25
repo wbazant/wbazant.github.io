@@ -2,13 +2,12 @@
 date: 2019-09-20
 tags:
   - gardening
-
 title: Storing water in a flat landscape
 ---
 
 The climate is changing, which may be detrimental to the long-term future of your garden. You should begin to prepare for the increased variance in weather: abnormally warm or cold seasons, longer dry spells, more violent rains. I wouldn't worry about the total increase of temperature, if you live in temparate zones - it is predicted to be a mere few degrees over the next few decades, and your plants will probably enjoy it.
 
-The largest climate-induced risk to your garden is probably potential breakdown of society in areas worse off than yours. I suggest you leave the resulting massive wave of migration to your govermnent, which will probably sort out a nice border fence, and focus on things you can do something about.
+The largest climate-induced risk to your garden is probably potential breakdown of society in areas worse off than yours. I suggest you leave the resulting massive wave of migration to your government, which will probably sort out a nice border fence, and focus on things you can do something about.
 
 So, let's learn about storing water.
 
@@ -59,5 +58,3 @@ Building piles of wood and soil is called hugelkultur and you can learn about it
 I've found it hard to learn about it at first, as it is so unscientific. There are many blogs with words like "hugelkultur" and inspiring photos, but nobody ever explains how long you need to wait until your pile of wood becomes something more.
 
 One way forward is to only follow advice of people who were clearly successful permaculturalists. I believe my squash is more than enough of a success, but if you need a second opinion be sure to check out this book by Sepp Holzer: [Permaculture: A Practical Guide to Small-Scale, Integrative Farming and Gardening](http://www.leotiger.com/omg/sepp.pdf). It is currently hosted by someone who probably has publisher's permission to do it, but if if disappears, email me and I'll lend you my copy.
-
-
