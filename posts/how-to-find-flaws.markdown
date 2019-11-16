@@ -32,7 +32,7 @@ A common criticism of capitalism is that it creates inequalities, and high salar
 # False dichotomy: "Success story" by Billy Burg
 I really don't like this comic, it's so preachy. Two old-time friends catch up over coffee, one - named Margaret - is proud of the job she does, the other one, Beatrice, doesn't want to talk about hers very much. See for yourself: 
 
-<img src="/static/flawed-comics/success-story.jpg">
+<img src="/static/flawed-comics/success-story.jpg" style="width:150%">
 
 If I understand correctly, Beatrice is rejecting the notion that what she has just described to Margaret are her hobbies, as a way to state that she really cares about those unproductive activities she does in her free time. This is incorrect since you can both have a hobby, and profit from it.
 
