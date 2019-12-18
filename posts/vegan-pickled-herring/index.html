@@ -7,7 +7,7 @@
         <link href="/css/skeleton.css" rel="stylesheet">
         <link href="/css/statocles-default.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <title>Instructions for your program from an online spreadsheet - Wojtek</title>
+        <title>Vegan pickled herring - Wojtek</title>
         
     </head>
     <body>
@@ -46,86 +46,46 @@
                     
                         
 <header>
-    <h1>Instructions for your program from an online spreadsheet</h1>
+    <h1>Vegan pickled herring</h1>
     <aside>
-        <time datetime="2018-11-08">
-            Posted on 2018-11-08
+        <time datetime="2019-12-17">
+            Posted on 2019-12-17
         </time>
     </aside>
 </header>
-    <section id="section-1"><p>Suppose you&#39;re a programmer contracting for a client who pays you to do analyses on a bunch of data. They give you a slightly different spreadsheet every week, and you&#39;re so lazy that you&#39;ve scripted everything up. The only thing you need to do is take that spreadsheet, save it on disk or whatever, and press &quot;run&quot;.</p>
+    <section id="section-1"><p>This is my new aubergine/eggplant recipe, inspired by baba ganoush and the fact I had one spare eggplant, a free evening, and a need to invent something for dinner.</p>
 
-<p>Here&#39;s an idea for a workflow that goes one step further, using GitHub&#39;s online editing. Of course GitHub&#39;s competition offers this too, and I dislike this Microsoft owned company as much as is currently in fashion.</p></section>
-    <section id="section-2"><h3>Why spreadsheets?</h3>
+<p>If you&#39;re inspired by elaborate, and largely ineffective, cooking processes, this is a post for you!</p></section>
+    <section id="section-2"><h1>How it looks like</h1>
 
-<p>People like to edit data in spreadsheets. It&#39;s easier to spot inconsistencies, process entries row by row, and the software offers a lot of techniques with facilitating mundane stuff like filling in the same value lots of times.</p>
+<p><img src="/static/vegan-pickled-herring.jpg"></p>
 
-<p>Spreadsheets capture data pretty well. Data is frequently not column-shaped but tree-shaped, with objects nested inside one another, but every tree is a table if you de-normalize it: this is a minor fact of mathematics. There&#39;s not much schema or validation, but people can just try hard not to make typos and they are frequently very good at it.</p>
-
-<h3>Requirements</h3>
-
-<h5>Your client needs:</h5>
+<h1>Ingredients</h1>
 
 <ul>
-<li>a GitHub account</li>
-<li>their own version of a spreadsheet</li>
-<li>copy-paste ability</li>
-<li>desire to follow instructions on a weird programmer site</li>
+<li>eggplant</li>
+<li>garlic</li>
+<li>coriander leaves</li>
+<li>olive oil</li>
+<li>optional: other baba ganoush ingredients</li>
+<li>vinegar</li>
 </ul>
 
-<h5>You need:</h5>
+<h1>Preparation</h1>
 
-<ul>
-<li>a GitHub account</li>
-<li>a repository</li>
-<li>a continuously integrated way to check incoming spreadsheets</li>
-<li>somewhere to continuously deploy that repository</li>
-</ul>
+<p>Slice the eggplant into thin flat pieces, rub salt on both sides of each piece, and leave in a bowl. This will get the juice out, removing the bitterness.</p>
 
-<h3>Workflow</h3>
+<p>Chop garlic and coriander, and put to the side.</p>
 
-<h4>Client edits own copy of spreadsheet</h4>
+<p>Come back to the eggplant after about twenty minutes, and rub off the moisture and excess salt with a paper towel. Remove skins, and cut the inside into batonnets, by which I mean, pieces thicker than juliennes in the french cut.</p>
 
-<p>Your client has a spreadsheet, maybe in Excel or Google Sheets. You train them to copy from that spreadsheet into the clipboard, maybe with shortcuts. This works because these spreadsheet software and operating systems are maintained by big companies that have many enterprise developers making sure people can copy-paste and conveniently select text across all the different computers and browsers.</p>
+<p>Pan fry the pieces on a hot pan - baba ganoush recipes want the eggplant charred on a grill, so we&#39;re trying to simulate that a bit, also removing more moisture.</p>
 
-<h4>Client accesses Github&#39;s &quot;online edit&quot;</h4>
+<p>When the eggplant is almost ready, add generous olive oil, garlic, and coriander. This is a questionable move, because herbs lose their flavour when heated, but coriander is kind of stubborn, so just be quick. At this point the eggplant won&#39;t be totally ready because pan frying isn&#39;t very effective, and you&#39;ll still have to combine it with garlic and oil, which is a justification for dropping it all in.</p>
 
-<p>Then the client needs to log into GitHub, find a file, and &quot;online edit&quot; it. This has potential to be unfamiliar and confusing - they need to be logged in, navigate to the right file, and do an &quot;edit&quot; on it in an unfamiliar, foreign-looking user interface for programmers. </p>
+<p>Finally, add vinegar - we&#39;re sorted for salt, fat, and heat, and there&#39;s no lemon in the kitchen, so vinegar will take care of the missing acidity dimension. The vinegar will synergise with the fried aubergine&#39;s general sliminess and the dish&#39;s oiliness, and make it remarkably similar to pickled herring.</p>
 
-<h4>Client migrates edit</h4>
-
-<p>The file pops up for editing, with the previous version that needs to be pasted over, and then the client needs to make a pull request.</p>
-
-<p>There&#39;s a number of GitHub&#39;s tiny features sweetening this up:
-- a file with a <code>.tsv</code> extension gets displayed as a HTML table
-- programmer words like &quot;pull request&quot; are all explained and not really necessary, and the call to action is &quot;Propose file changes&quot; which is clear enough
-- &quot;Preview changes&quot; lets people look at line-by-line diffs, something I personally struggle to edit text without but the norm is to probably read the whole thing again</p>
-
-<h4>Client submits pull request</h4>
-
-<p>Proposing file changes does a fork to client&#39;s repository, fills out the pull request template, and takes them to the PR page with everything set up correctly, so that they can just click through. You can provide a template there if it helps.</p>
-
-<h4>Client watches pull request get processed</h4>
-
-<p>You can then run arbitrary code while the client waits, with nice UI on the PR page that says &quot;wait&quot;, &quot;good&quot;, or &quot;not good&quot;.</p>
-
-<h4>You merge the pull request</h4>
-
-<p>Merging on successful build is a tedious job programmers are burdened with, and as such it already got solved. <a href="https://stackoverflow.com/questions/40391344/automatically-merge-verified-and-tested-github-pull-requests">Here&#39;s one solution</a> and if it doesn&#39;t work well enough I bet you can use a search engine yourself.</p>
-
-<h4>You run the code on a new spreadsheet</h4>
-
-<p>This would probably run on a server you control - again it&#39;s completely standard. Have a job that polls the repository, does the work, and tells the client their stuff is ready.</p>
-
-<h3>Case study in data curation</h3>
-
-<p>I hope you were impressed by the earlier bit about how people prefer to edit spreadsheets but the nature of data is frequently not tabular. </p>
-
-<p>I picked it up as digest from a discussion in <a href="https://www.alliancegenome.org/">model organism community</a> at work. Running these portals depends on work of curators: scientifically trained data entry people who can e.g. extract information from publications and store it somewhere. They capture data in complicated formats, and require stuff like attribution - who added what piece of information and why.</p>
-
-<h3>Ending: on superior programmer workflows</h3>
-
-<p>We programmers have extremely advanced ways of working and collaborating with each other. If other people adapt to these ways, interacting with them might become borderline bearable, but it&#39;s a long way away now so we need to be patient. We will be rewarded with these rare magical moments when we don&#39;t have to open emails and move spreadsheets. Magical, because we have successfully engineered away something a person without the penchant for automation would instead choose to toil on. Rare, because doing semi-repetitive stuff manually can be done in a blip and isn&#39;t even that much of a problem, it&#39;s just not the right style.</p>
+<p>Serve on toast, on a plate with toast to the side, or without toast.</p>
 </section>
 
 

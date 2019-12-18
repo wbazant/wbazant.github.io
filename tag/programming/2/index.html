@@ -49,79 +49,89 @@
                         <article>
     <header>
         <h1><a href="/posts/a-bellnwhistle-toggle-through-environment-variables">A bell&#39;n&#39;whistle toggle through environment variables</a></h1>
-        <p class="tags">Tags:
-        <a href="/tag/bash" rel="tag">bash</a>
-        <a href="/tag/programming" rel="tag">programming</a>
-</p>
-<aside>
-    <time datetime="2018-04-25">
-        Posted on 2018-04-25
-    </time>
-</aside>
 
+        <aside>
+            <time datetime="2018-04-25">
+                Posted on 2018-04-25
+            </time>
+        </aside>
+        <p class="tags">Tags:
+                <a href="/tag/bash" rel="tag">bash</a>
+                <a href="/tag/programming" rel="tag">programming</a>
+        </p>
     </header>
+
     <section>
-    <p>The usual way to control a script&#39;s behaviour is to provide a config file or command line arguments at startup. Actually, it&#39;s also common to modify the script&#39;s code, typically after executing it and noticing it&#39;s not doing the right thing. Neither of these are very convenient when you are including the script somewhere else. This post is about the third way, its curious advantages, and how it&#39;s usually epically bad but sometimes it isn&#39;t.</p>
+        <p>The usual way to control a script&#39;s behaviour is to provide a config file or command line arguments at startup. Actually, it&#39;s also common to modify the script&#39;s code, typically after executing it and noticing it&#39;s not doing the right thing. Neither of these are very convenient when you are including the script somewhere else. This post is about the third way, its curious advantages, and how it&#39;s usually epically bad but sometimes it isn&#39;t.</p>
     </section>
+
     <p><a href="/posts/a-bellnwhistle-toggle-through-environment-variables#section-2">Continue reading...</a></p>
+
 </article>
 <article>
     <header>
         <h1><a href="/posts/a-programmers-guide-to-understanding-life">Genome assembly and annotation</a></h1>
-        <p class="tags">Tags:
-        <a href="/tag/bioinformatics" rel="tag">bioinformatics</a>
-        <a href="/tag/programming" rel="tag">programming</a>
-</p>
-<aside>
-    <time datetime="2018-01-11">
-        Posted on 2018-01-11
-    </time>
-</aside>
 
+        <aside>
+            <time datetime="2018-01-11">
+                Posted on 2018-01-11
+            </time>
+        </aside>
+        <p class="tags">Tags:
+                <a href="/tag/bioinformatics" rel="tag">bioinformatics</a>
+                <a href="/tag/programming" rel="tag">programming</a>
+        </p>
     </header>
+
     <section>
-    <p>This is going to be an introduction for programmers who don&#39;t know much bioinformatics, pretty much me before I started working on <a href="http://parasite.wormbase.org">WormBase ParaSite</a>. For something less ignorant, simplistic, and without swearwords, you could read <a href="https://www.ncbi.nlm.nih.gov/pubmed/11433356">Genome annotation: from sequence to biology (2001)</a>. </p>
+        <p>This is going to be an introduction for programmers who don&#39;t know much bioinformatics, pretty much me before I started working on <a href="http://parasite.wormbase.org">WormBase ParaSite</a>. For something less ignorant, simplistic, and without swearwords, you could read <a href="https://www.ncbi.nlm.nih.gov/pubmed/11433356">Genome annotation: from sequence to biology (2001)</a>. </p>
     </section>
+
     <p><a href="/posts/a-programmers-guide-to-understanding-life#section-2">Continue reading...</a></p>
+
 </article>
 <article>
     <header>
         <h1><a href="/posts/bats-and-what-is-testing-even-for">Testing Bash scripts and what is testing even for</a></h1>
-        <p class="tags">Tags:
-        <a href="/tag/programming" rel="tag">programming</a>
-</p>
-<aside>
-    <time datetime="2017-03-30">
-        Posted on 2017-03-30
-    </time>
-</aside>
 
+        <aside>
+            <time datetime="2017-03-30">
+                Posted on 2017-03-30
+            </time>
+        </aside>
+        <p class="tags">Tags:
+                <a href="/tag/programming" rel="tag">programming</a>
+        </p>
     </header>
+
     <section>
-    <p>An externally facing application is tested before delivery to assure it meets expectations placed in it. <a href="http://blog.cleancoder.com/uncle-bob/2017/10/04/CodeIsNotTheAnswer.html">Uncle Bob is sternly clear that you&#39;re really not doing a good job if you don&#39;t have an automated means of doing that</a>. This of course assumes you care about the expectations people place in your software, but (even outside the commercial setting where people try to get others to pay for their work) disputing that assumption is only allowed in what my friend calls a &quot;philosophical free-for-all&quot; - perhaps you are the <a href="http://www.tate.org.uk/art/artworks/rothko-red-on-maroon-t01168">Rothko</a> of coders demonstrating that software having to do something is just another assumption to be challenged, or <a href="https://www.youtube.com/watch?v=YaGxhpe1NZ4">another V the cloaked renegade</a> directing an orchestra of humming fans and creaking CPUs.</p>
+        <p>An externally facing application is tested before delivery to assure it meets expectations placed in it. <a href="http://blog.cleancoder.com/uncle-bob/2017/10/04/CodeIsNotTheAnswer.html">Uncle Bob is sternly clear that you&#39;re really not doing a good job if you don&#39;t have an automated means of doing that</a>. This of course assumes you care about the expectations people place in your software, but (even outside the commercial setting where people try to get others to pay for their work) disputing that assumption is only allowed in what my friend calls a &quot;philosophical free-for-all&quot; - perhaps you are the <a href="http://www.tate.org.uk/art/artworks/rothko-red-on-maroon-t01168">Rothko</a> of coders demonstrating that software having to do something is just another assumption to be challenged, or <a href="https://www.youtube.com/watch?v=YaGxhpe1NZ4">another V the cloaked renegade</a> directing an orchestra of humming fans and creaking CPUs.</p>
 
 <p>When you&#39;re employed on a large software development project, you gotta write tests, maybe even before you write the code, and then you gotta submit pull requests, and there will be tools checking that you wrote enough tests, and that they pass. In a less hip but equally large environment, like a bank, you still you gotta run tests, and e.g. attach their results in a spreadsheet. </p>
 
 <p>At Expression Atlas, I did some work on the experiment import pipeline. I could choose how many tests to write, and it wasn&#39;t typical to write tests, but I believe it&#39;s quite neat that I did. </p>
     </section>
+
     <p><a href="/posts/bats-and-what-is-testing-even-for#section-2">Continue reading...</a></p>
+
 </article>
 <article>
     <header>
         <h1><a href="/posts/a-lighter-closeable-iterator-from-expression-atlas">A lighter closeable iterator from Expression Atlas</a></h1>
-        <p class="tags">Tags:
-        <a href="/tag/programming" rel="tag">programming</a>
-        <a href="/tag/java" rel="tag">java</a>
-</p>
-<aside>
-    <time datetime="2017-01-10">
-        Posted on 2017-01-10
-    </time>
-</aside>
 
+        <aside>
+            <time datetime="2017-01-10">
+                Posted on 2017-01-10
+            </time>
+        </aside>
+        <p class="tags">Tags:
+                <a href="/tag/programming" rel="tag">programming</a>
+                <a href="/tag/java" rel="tag">java</a>
+        </p>
     </header>
+
     <section>
-    <p>The Atlas webapp code has <a href="https://github.com/gxa/atlas/blob/master/base/src/main/java/uk/ac/ebi/atlas/commons/streams/ObjectInputStream.java">this interface</a> :</p>
+        <p>The Atlas webapp code has <a href="https://github.com/gxa/atlas/blob/master/base/src/main/java/uk/ac/ebi/atlas/commons/streams/ObjectInputStream.java">this interface</a> :</p>
 
 <pre><code>import java.io.Closeable;
 
@@ -133,28 +143,33 @@ public interface ObjectInputStream&lt;T&gt; extends Closeable {
 
 <p>I thought it&#39;s so interesting that I wrote an entire blog post about it.</p>
     </section>
+
     <p><a href="/posts/a-lighter-closeable-iterator-from-expression-atlas#section-2">Continue reading...</a></p>
+
 </article>
 <article>
     <header>
         <h1><a href="/posts/our-enterprises-finest-software-solutions">Our Enterprise&#39;s Finest Software Solutions</a></h1>
-        <p class="tags">Tags:
-        <a href="/tag/story" rel="tag">story</a>
-        <a href="/tag/programming" rel="tag">programming</a>
-</p>
-<aside>
-    <time datetime="2015-11-17">
-        Posted on 2015-11-17
-    </time>
-</aside>
 
+        <aside>
+            <time datetime="2015-11-17">
+                Posted on 2015-11-17
+            </time>
+        </aside>
+        <p class="tags">Tags:
+                <a href="/tag/story" rel="tag">story</a>
+                <a href="/tag/programming" rel="tag">programming</a>
+        </p>
     </header>
+
     <section>
-    <p>There is a big idea out there in the startup world that you should build a Minimum Viable Product, e.g. <a href="http://theleanstartup.com/principles">The Lean Startup tells you to do that</a>. The general principle is to put together an unpolished product that is the core of your idea, presumably get someone to use it, and iterate from there. This is sometimes confused with a prototype or a demo that you put together and show to investors, or only manifests itself with the founders&#39; idea that they need to build something. </p>
+        <p>There is a big idea out there in the startup world that you should build a Minimum Viable Product, e.g. <a href="http://theleanstartup.com/principles">The Lean Startup tells you to do that</a>. The general principle is to put together an unpolished product that is the core of your idea, presumably get someone to use it, and iterate from there. This is sometimes confused with a prototype or a demo that you put together and show to investors, or only manifests itself with the founders&#39; idea that they need to build something. </p>
 
 <p>Surprisingly, I have encountered very similar strategies during my short but thrilling early career in an investment bank. As teams tried to navigate the complex landscape of random requirements, unclear priorities - my boss&#39;s boss&#39;s boss actually ordained during a yearly town hall that we should be prioritising stability while delivering on new features - and random interruptions of &quot;we can&#39;t deploy software because there&#39;s gonna be an announcement by a central bank and lots of trading&quot; or &quot;we can&#39;t hire anyone this quarter, because we didn&#39;t make enough money in Japan&quot; - anyway, I&#39;m rambling. People still got stuff done, thanks to the MVP principle: do most of what you have to do with the limited means available to you, i.e. the minimum viable effort that still gets you a promotion. I will share a couple of examples: may you find them educative and inspiring.</p>
     </section>
+
     <p><a href="/posts/our-enterprises-finest-software-solutions#section-2">Continue reading...</a></p>
+
 </article>
 
 <ul class="pager">
@@ -169,6 +184,7 @@ public interface ObjectInputStream&lt;T&gt; extends Closeable {
             </a>
     </li>
 </ul>
+
 
 
                     </main>
