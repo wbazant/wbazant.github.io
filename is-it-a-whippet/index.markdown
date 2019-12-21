@@ -66,7 +66,7 @@ Whippets can jump, then spread themselves flat in the air, fold back up, and fin
 No one knows how they have learned to do this, and what advantages it may give them.
 
 ### Excellent sight
-Whippets, being sighthounds, an have impressive ability to see each other across a large distance. This whippet is exchanging glances with another whippet on the other side of an expansive valley:
+Whippets, being sighthounds, have an impressive ability to see each other across a large distance. This whippet is exchanging glances with another whippet on the other side of an expansive valley:
 <img src="https://preview.redd.it/l4ku6sof7ob31.jpg?width=640&crop=smart&auto=webp&s=cdcbca36c2173325b6c4029305260d60d04b9e38" >
 
 
