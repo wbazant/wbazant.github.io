@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wojtek</title>
+        <link>http://127.0.0.1:53164/tag/poems/1.html</link>
+        <atom:link href="http://127.0.0.1:53164/tag/poems" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Wojtek</description>
+        <generator>Statocles 2.000</generator>
+        <item>
+            <title>My first vegan poem</title>
+            <link>http://127.0.0.1:53164/posts/poem-i-want-to-eat</link>
+            <guid>http://127.0.0.1:53164/posts/poem-i-want-to-eat</guid>
+            <description><![CDATA[
+                <p>I've joined a poetry group. There are prompts, people work on them, and afterwards read them in pairs.</p>
+                <p><a href="http://127.0.0.1:53164/posts/poem-i-want-to-eat#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 04 Oct 2020 00:00:00 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>
